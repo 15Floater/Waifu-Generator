@@ -1,3 +1,4 @@
+#the entire stack of imports
 from tkinter import *
 from PIL import ImageTk, Image
 import requests
@@ -6,6 +7,7 @@ from io import BytesIO
 import urllib.request
 from resizeimage import resizeimage
 
+#GIF Stuff
 
 
 
@@ -22,6 +24,7 @@ def api_call():
     data = response.json()
     global url
     url = data['url']
+
 
     #takes the image, opens it up, gets width and height (for later)
     image = Image.open(requests.get(url, stream=True).raw)
@@ -60,7 +63,8 @@ choose_label.grid(row=1, column=0, columnspan=2)
 
 #button creation
 finalize_button = Button(text='Finalize choice', command=api_call)
-finalize_button.grid(row=3, column=1)
+finalize_button.config(bg='#f0ffff')
+finalize_button.grid(row=3, column=1, pady=15)
 
 
 #dropdown creation
@@ -70,9 +74,10 @@ options=['waifu', 'neko', 'megumin', 'bully', 'cuddle',
 clicked = StringVar()
 clicked.set('Type Selector')
 
-#dropdown command + feis
+#dropdown command + grid
 drop = OptionMenu(window, clicked, *options)
-drop.grid(row=3, column=0)
+drop.config(bg='#f0ffff')
+drop.grid(row=3, column=0, pady=15)
 
 #initial image
 #or at least that's what it was supposed to be
