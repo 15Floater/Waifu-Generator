@@ -4,6 +4,7 @@ import requests
 import json
 from io import BytesIO
 import urllib.request
+from resizeimage import resizeimage
 
 
 
@@ -21,7 +22,12 @@ def api_call():
     url = data['url']
     print(url)
 
-    im = ImageTk.PhotoImage(Image.open(requests.get(url, stream=True).raw))
+    image = Image.open(requests.get(url, stream=True).raw)
+    image = resizeimage.resize_contain(image, [200, 300], bg_color=(255, 255, 255, 0))
+
+    im = ImageTk.PhotoImage(image)
+    
+
     starter_label.config(image=im)
 
 
@@ -62,7 +68,8 @@ drop = OptionMenu(window, clicked, *options)
 drop.grid(row=2, column=2)
 
 #initial image
-starter_image = ImageTk.PhotoImage(Image.open('images/nino_template2.jpg'))
+nino_filepath = 'OneDrive/Desktop/Personal/waifu_generator/images/nino_template2.jpg'
+starter_image = ImageTk.PhotoImage(Image.open(nino_filepath))
 starter_label = Label(window, image=starter_image)
 #starter_label.config(bg='#Fdfcfa', highlightthickness=0)
 starter_label.grid(row=2, column=1)
