@@ -25,8 +25,11 @@ def api_call():
     global url
     url = data['url']
 
+    #runs all the image stuff
+    image_stuff()
 
-    #takes the image, opens it up, gets width and height (for later)
+def image_stuff():
+    '''takes the image, opens it up, gets width and height (for later)'''
     image = Image.open(requests.get(url, stream=True).raw)
     width, height = image.size
     print(width, height)
@@ -37,6 +40,9 @@ def api_call():
 
     #converts the image into an ImageTk so it can be configured onto the label
     im = ImageTk.PhotoImage(image)
+    #saves the reference to the image, so the image doesn't disappear when
+    #functions are separated
+    starter_label.img = im
     starter_label.config(image=im)
 
 
@@ -97,3 +103,7 @@ starter_label.grid(row=2, column=0, columnspan=2)
 
 window.mainloop()
 
+#api shoots out
+#gets me an image (possibly a gif)
+#image is passed through the gif checker
+#image is displayed, either as a gif, or not
