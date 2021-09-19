@@ -1,4 +1,4 @@
-![In Action](https://file:///C:/Users/balan/OneDrive/Pictures/Saved%20Pictures/waifu_gen.PNG)
+![In Action](https://ibb.co/RHWd9f7)
 
 
 # Waifu-Generator
