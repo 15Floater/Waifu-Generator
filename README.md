@@ -1,4 +1,4 @@
-![In Action](https://ibb.co/RHWd9f7)
+![In Action](waifu_gen.png)
 
 
 # Waifu-Generator
